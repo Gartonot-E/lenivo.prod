@@ -15,7 +15,7 @@ if(isset($_SESSION['user_login'])) {
 if($cards != true){
 	echo "<p>".$paragraph."</p>";
 }  else {
-	echo "<h4>Хакатон</h4><p>Текст</p>";
+	echo "<p>У вас нет мероприятий</p>";
 }
 
 ?>

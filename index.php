@@ -2,15 +2,15 @@
 	
 require_once 'connect.php';
 
-if($_SERVER['REQUEST_URI'] == "/admin"){
-	$title = "Главая страница";
-	require_once 'admin/index.php';
-} 
 
 if( $_SERVER['REQUEST_URI'] == "/"){
 	$title = "Главая страница";
 	require_once 'header.php';
 	require_once 'content.php';
+}
+
+if ($_SERVER['REQUEST_URI'] == "/admin-panel/"){
+	require_once 'admin-panel/index.php';
 }
 
 if ($_SERVER['REQUEST_URI'] == "/create"){
@@ -36,6 +36,14 @@ if ($_SERVER['REQUEST_URI'] == "/signup"){
 	require_once 'header.php';
 	require_once 'signup.php';
 }
+
+if ($_SERVER['REQUEST_URI'] == "/lk"){
+	$title = "Личный кабинет";
+	require_once 'header.php';
+	require_once 'lk.php';
+}
+
+
 
 
 

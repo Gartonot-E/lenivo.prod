@@ -8,21 +8,25 @@ if(isset($_POST['done_signup']) && !empty($_POST['full_name']) && !empty($_POST[
 	$full_name = trim(htmlspecialchars($_POST['full_name']));
 	$login = trim(htmlspecialchars($_POST['login']));
 	$email = trim(htmlspecialchars($_POST['email']));
-	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+	$password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
 
+	$row = $mysqli->query("SELECT * FROM `users` WHERE `login` = '$login'")->fetch_assoc();
 
-	$res = $mysqli->query("SELECT * FROM `users` WHERE `login` = '$login'");
-	$row = $res->fetch_assoc();
 
 	if($row['login'] == $login){
 		$errors[] = "Пользователь с таким логином уже существует";
-	} else {
-		$res = $mysqli->query("INSERT INTO `users`(`full_name`, `login`, `email`, `password`) VALUES ('$full_name', '$login', '$email', '$password')");
+	} else {	
+		$mysqli->query("INSERT INTO `mails` (`email`) VALUES ('$email')");
+
+		$id_email = $mysqli->query("SELECT * FROM `mails` WHERE `email` ='$email'")->fetch_assoc();
+		$id_email_id = $id_email['id'];
+
+		$res = $mysqli->query("INSERT INTO `users`(`full_name`, `login`, `email`, `password`) VALUES ('$full_name', '$login', '$id_email_id', '$password')");
 
 		if($res){
 			$success[] = "Вы успешно зарегистрированы, <a href='/login'>авторизоваться</a>";
 		} else {
-			$errors[] = "Ошибка базы данных";
+			$errors[] = "Такая почта уже существует";
 		}
 	}
 
@@ -41,19 +45,24 @@ if(isset($_POST['done_signup']) && !empty($_POST['full_name']) && !empty($_POST[
 		?>
 		<div class="form-group">
 			<label for="full_name">Введите ФИО</label>
-			<input type="text" id="full_name" class="form-control" name="full_name" placeholder="ФИО" required>
+			<input type="text" id="full_name" class="form-control" name="full_name" placeholder="ФИО" value="<?=@$full_name?>" required>
 		</div>
 		<div class="form-group">
 			<label for="login">Введите логин</label>
-			<input type="text" id="login" class="form-control" name="login" placeholder="Логин" required>
+			<input type="text" id="login" class="form-control" name="login" placeholder="Логин" value="<?=@$login?>" required>
 		</div>
 		<div class="form-group">
 			<label for="email">Введите вашу почту</label>
-			<input type="email" id="email" class="form-control" name="email" placeholder="Почта" required>
+			<input type="email" id="email" class="form-control" name="email" placeholder="Почта" value="<?=@$email?>" required>
 		</div>
 		<div class="form-group">
 			<label for="password">Введите пароль</label>
 			<input type="password" id="password" class="form-control" name="password" placeholder="Пароль" required>
+		</div>
+		<div class="form-group">
+			<input type="checkbox" id="checkbox" checked>
+			<label for="checkbox"><small>Согласен с <a href="polit.docx" download>политикой обработки персональных данных</a></small>
+			</label>
 		</div>
 		<div class="form-group">
 			<input type="submit" class="form-control btn btn-login" name="done_signup" value="Зарегистрироваться">

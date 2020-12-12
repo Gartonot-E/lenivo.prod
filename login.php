@@ -4,10 +4,11 @@ $errors = [];
 $success = [];
 
 
+
 if(isset($_POST['done_login']) && !empty($_POST['login']) && !empty($_POST['password'])){
 
 	$login = trim(htmlspecialchars($_POST['login']));
-	$password = $_POST['password'];
+	$password = trim($_POST['password']);
 
 	$res = $mysqli->query("SELECT * FROM `users` WHERE `login` = '$login'");
 
@@ -21,7 +22,7 @@ if(isset($_POST['done_login']) && !empty($_POST['login']) && !empty($_POST['pass
 		if(password_verify($password, $g_password)){
 			$_SESSION['user_login'] = $g_login;
 			$_SESSION['user_full_name'] = $g_full_name;
-			header('Location: /');
+			header('Location: /login');
 		} else {
 			$errors[] = "Пароль не верный";
 		}
@@ -33,6 +34,8 @@ if(isset($_POST['done_login']) && !empty($_POST['login']) && !empty($_POST['pass
 }
 
 if(isset($_SESSION['user_login'])){
+	require_once 'lk.php';
+} else {
 ?>
 
 
@@ -54,6 +57,10 @@ if(isset($_SESSION['user_login'])){
 			<input type="password" id="password" class="form-control" name="password" placeholder="Пароль" required>
 		</div>
 		<div class="form-group">
+			<input type="checkbox" id="checkbox" checked>
+			<label for="checkbox"><small>Согласен с <a href="polit.docx" download>политикой обработки персональных данных</a></small></label>
+		</div>
+		<div class="form-group">
 			<input type="submit" class="form-control btn btn-login" name="done_login" value="Войти">
 		</div>
 		<p>Ещё нет аккаунта?<br><a href="signup">Зарегистрироваться</a></p>
@@ -62,13 +69,6 @@ if(isset($_SESSION['user_login'])){
 	<img src="assets/img/group.svg" class="user-group" alt="Группа пользователей">
 	</div>
 </div>
-
-<?php
-} else {
-	?>
-
-	<h1>Личный кабинет</h1>
-
-	<?php
+<?php 
 }
 ?>
