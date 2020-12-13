@@ -8,17 +8,32 @@ $success = [];
 $errorsE = [];
 $successE = [];
 // Создание мероприятий
-if(isset($_POST['done_create_event']) && !empty($_POST['title']) && !empty($_POST['textarea']) && !empty($_POST['date']) && !empty($_POST['time'])) {
+if(isset($_POST['done_create_event']) && !empty($_POST['title']) && !empty($_POST['textarea']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['cat'])) {
 
 	$title = $_POST['title'];
 	$text = $_POST['textarea'];
 	$date = $_POST['date'];
 	$time = $_POST['time'];
+	$cat = $_POST['cat'];
+	// $file_name = $_FILES['photo']['name'];
+	// $file_size = $_FILES['photo']['size'];
+	// $file_tmp = $_FILES['photo']['tmp_name'];
+	// $file_type = $_FILES['photo']['type'];
+	// $file_ext = strtolower(end(explode('.', $_FILES['photo']['name'] )));
 
+	// $expensions = array("jpeg", "jpg", "png");
 
+	// if ($file_size > 2097152) {
+	// 	$errorsE[] = 'Файл должен быть 2 мб';
+	// }
 
+	// if (empty($errorsE)) {
+	// 	move_uploaded_file($file_tmp, "../assets/img/" . $file_name);
+	// } else {
+	// 	$errorsE[] = 'Не удалось загрузить файл';
+	// }
 
-	$res = $mysqli->query("INSERT INTO `events` (`title`, `text`, `date`, `time`) VALUES('$title', '$text', '$date', '$time')");
+	$res = $mysqli->query("INSERT INTO `events` (`title`, `text`, `date`, `time`, `cat_1`, `img`) VALUES('$title', '$text', '$date', '$time', '$cat', '$file_name')");
 
 	if($res){
 		$successE[] = "Мероприятие с названем \"".$title."\" успешно созданно";
@@ -128,6 +143,15 @@ if(isset($_SESSION['admin_type'])){
 					echo "<div class='alert-success'>".array_shift($successE)."</div>";
 				}
 			?>
+			<style>
+				.form-control {
+					height: 40px;
+				}
+
+				.block-flex {
+					width: 92%;
+				}
+			</style>
 				<h4>Создание мероприятия</h4>
 			  <div class="form-group">
 			    <label for="title">Название</label>
@@ -137,23 +161,23 @@ if(isset($_SESSION['admin_type'])){
 			    <label for="textarea">Текст</label>
 			    <textarea name="textarea" id="textarea" cols="30" rows="2" maxlength="140" class="form-control"></textarea>
 			  </div>
-			  <div class="form-group">
-			    <label for="category">Добавленные категории</label>
-			    <input type="text" name="category" class="form-control" id="category" disabled>
-			  </div>
-			  <div class="form-group">
-			    <label for="cat">Добавить категорию</label>
-			    <select name="cat" id="cat" class="form-control" disabled>
-			    	<option value="1">Собрание</option>
-			    	<option value="2">Развлечение</option>
-			    	<option value="3">Спорт</option>
-			    	<option value="4">Соревнование</option>
-			    </select>
-			  </div>
+			<div class="form-group">
+				<label for="category">Добавить категорию</label>
+				<select name="cat" id="cat" class="form-control">
+					<?php 
+
+					$result = $mysqli->query("SELECT * FROM `category`");
+					while ($row = $result->fetch_assoc()) {
+						echo "<option value='".$row['cat']."'>".$row['cat']."</option>";
+					}
+
+					?>
+				</select>
+			</div>
 			 <div class="block-flex">
 			   <div class="form-group">
 			    <label for="photo">Фотография</label>
-			    <input type="file" name="photo" class="form-control" id="photo" disabled>
+			    <input type="file" name="photo" class="form-control" id="photo" required disabled>
 			  </div>
 			  <div class="form-group">
 			    <label for="date">Дата</label>

@@ -27,12 +27,14 @@ if ($_SERVER['REQUEST_URI'] == "/all"){
 
 if ($_SERVER['REQUEST_URI'] == "/login"){
 	$title = "Авторизация";
+	$style = "loginlogin";
 	require_once 'header.php';
 	require_once 'login.php';
 }
 
 if ($_SERVER['REQUEST_URI'] == "/signup"){
 	$title = "Регистрация";
+	$style = "signupsignup";
 	require_once 'header.php';
 	require_once 'signup.php';
 }
@@ -43,9 +45,6 @@ if ($_SERVER['REQUEST_URI'] == "/lk"){
 	require_once 'lk.php';
 }
 
-
-
-
-
+require_once 'mail.php';
 require_once 'footer.php';
 ?>

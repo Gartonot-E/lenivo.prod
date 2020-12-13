@@ -24,7 +24,7 @@ if(isset($_POST['done_signup']) && !empty($_POST['full_name']) && !empty($_POST[
 		$res = $mysqli->query("INSERT INTO `users`(`full_name`, `login`, `email`, `password`) VALUES ('$full_name', '$login', '$id_email_id', '$password')");
 
 		if($res){
-			$success[] = "Вы успешно зарегистрированы, <a href='/login'>авторизоваться</a>";
+			$success[] = "Вы успешно зарегистрированы, <a style='color: #333;' href='/login'>авторизоваться</a>";
 		} else {
 			$errors[] = "Такая почта уже существует";
 		}
@@ -35,9 +35,9 @@ if(isset($_POST['done_signup']) && !empty($_POST['full_name']) && !empty($_POST[
 
 ?>
 
-<h1>Регистрация</h1>
+<h1 class="text-center">Регистрация</h1>
 <div class="signup">
-	<div class="row">
+	<div class="row signupMain">
 	<form method="POST">
 		<?php 
 		if(!empty($errors) && isset($errors)) { echo "<div class='alert-error'>".array_shift($errors)."</div>";}
@@ -59,9 +59,9 @@ if(isset($_POST['done_signup']) && !empty($_POST['full_name']) && !empty($_POST[
 			<label for="password">Введите пароль</label>
 			<input type="password" id="password" class="form-control" name="password" placeholder="Пароль" required>
 		</div>
-		<div class="form-group">
-			<input type="checkbox" id="checkbox" checked>
-			<label for="checkbox"><small>Согласен с <a href="polit.docx" download>политикой обработки персональных данных</a></small>
+		<div class="form-group" style="display: flex;">
+			<input type="checkbox" id="checkbox" style="margin-top: 6px;" checked>
+			<label for="checkbox" style="width: 90%"><small>Согласен с <a href="polit.docx" download>политикой обработки персональных данных</a></small>
 			</label>
 		</div>
 		<div class="form-group">
@@ -69,7 +69,5 @@ if(isset($_POST['done_signup']) && !empty($_POST['full_name']) && !empty($_POST[
 		</div>
 		<p>Есть аккаунт?<br><a href="login">Войти в аккаунт</a></p>
 	</form>
-
-	<img src="assets/img/signup.svg" class="user-group" alt="Группа пользователей">
 	</div>
 </div>

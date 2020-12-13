@@ -37,8 +37,8 @@ label {
 
 .form-control {
 	display: block;
-    width: 100%;
-    height: calc(1.5em + .75rem + 2px);
+    width: 92%;
+    height: 25px;
     padding: .375rem .75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -54,6 +54,16 @@ label {
 .row {
 	display: flex;
 	justify-content: space-between;
+}
+
+.loginMain {
+	width: 65%;
+	margin: 0 auto;
+}
+
+.signupsignup {
+	width: 40%;
+	margin: 0 auto;
 }
 
 .btn {
@@ -98,6 +108,10 @@ textarea {
 	color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
+}
+
+.text-center {
+	text-align: center;
 }
 
 /* header styles */
@@ -174,7 +188,11 @@ main {
 	background: rgba(0,0,0, .7);
 	min-height: 150px;
 	border-radius: 4px;
-	padding: 60px 80px;
+	padding: 20px 70px;
+	color: #fff;
+}
+
+.content a {
 	color: #fff;
 }
 
@@ -184,6 +202,7 @@ main {
 
 .content p {
 	font-size: 18px;
+	min-height: 63px;
 }
 
 
@@ -202,6 +221,9 @@ main {
 .btn-login {
 	background: #43ABD8;
 	color: #fff;
+	height: 39px;
+	border: none;
+	width: 100%;
 }
 
 form p a, form small a {
@@ -222,6 +244,13 @@ form p a, form small a {
 
 /* card events */
 
+.filter-btn {
+	padding: 7px 20px;
+	border: 0;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
 .card-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -235,10 +264,16 @@ form p a, form small a {
 	width: 480px;
 	color: #333;
 	margin-bottom: 20px;
+	transition: .4s;
 }
 
+.event:hover {
+	background: #f7f7f7;
+	box-shadow: 0px 0px 10px #777;
+} 
+
 .event-header {
-	background: #33B5AD;
+	background: linear-gradient(180deg, rgba(34, 34, 34, 0.8) 0%, rgba(34, 34, 34, 0.2) 100%), url('../img/slide/1.jpg') top center / cover;
 	border-radius: 4px 4px 0 0;
 	padding: 20px 10px 20px 20px;
 }
@@ -246,6 +281,16 @@ form p a, form small a {
 .event-header h2 {
 	font-size: 30px;
 	color: #fff;
+}
+
+.event-btn {
+	padding: 10px 20px;     
+	border-radius: 4px;     
+	border: 0;     
+	background: #3cbb5d;     
+	font-weight: 700;     
+	color: #333;
+	cursor: pointer;
 }
 
 .event-body {
@@ -277,18 +322,74 @@ form p a, form small a {
 	opacity: .9;
 }
 
+.loginlogin, .signupsingup {
+	width: 45%;
+}
 
-
-
-
-
+.card-list .event-footer p {
+	display: flex;
+	align-items: center;
+}
 
 /* @media */
 
+@media screen and (max-width: 1200px){
 
-@media screen and (max-width: 900px){
-	.content .login .row img.user-group {
-		display: none;
-	}	
+}
+
+@media screen and (max-width: 1199px){
+	.container {
+		width: 80%;
+	}
+	.block-flex {
+		flex-wrap: wrap;
+	}
+	.block-flex button {
+		margin-bottom: 20px;
+	}
+	.content h1 {
+		text-align: center;
+	}
+	.card-list {
+		justify-content: center;
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 769px){
+	nav ul li {
+		margin-left: 20px;
+	}
+}
+
+@media screen and (max-width: 569px){
+	.content {
+		padding: 10px 20px;
+	}
+	nav ul {
+		flex-direction: column;
+	}
+
+	nav ul li {
+		margin-bottom: 20px;
+		margin-left: 0;
+	}
+	main {
+		padding-top: 200px;
+	}
+}
+
+@media screen and (max-width: 424px){
+
+	nav ul li:first-child {
+		width: 100px;
+	}
+}
+
+
+@media screen and (max-width: 368px){
+	.form-group img {
+		width: 215px;
+	}
 }
 

@@ -1,14 +1,18 @@
 <h1>Личный кабинет</h1>
 <p>Ваше ФИО: <?=$_SESSION['user_full_name']?></p>
 
-<?php 
+<style>
+	
+	li.form-group > .form-control {
+		width: 100% !important;
+		height: 45px !important;
+	}
+</style>
 
-
-?>
-<h3>Выбрать тему заднего фона</h3>
+<!-- <h3>Выбрать тему заднего фона</h3> -->
 <div class="card">
 <form method="POST">
-	<ul>
+	<!-- <ul>
 		<li class="form-group">
 			<img src="assets/img/slide/1.jpg" alt="" width="256">
 			<input type="submit" class="form-control" name="submit1" value="Выбрать">
@@ -69,7 +73,7 @@
 			<input type="submit" class="form-control" name="submit12" value="Выбрать">
 			<input type="hidden" name="id12" value="12">
 		</li>
-	</ul>
+	</ul> -->
 </form>
 </div>	
 <a href="logout.php">Выйти</a>

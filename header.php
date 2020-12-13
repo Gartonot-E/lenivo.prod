@@ -4,48 +4,48 @@ $login = $_SESSION['user_login'];
 $row = $mysqli->query("SELECT * FROM `users` WHERE `login` = '$login'")->fetch_assoc();
 
 
-	if(isset($_POST['submit1'])){
-		$_SESSION['id_src'] = $_POST['id1'];
-	}
-	if(isset($_POST['submit2'])){
-		$_SESSION['id_src'] = $_POST['id2'];
-	}
-	if(isset($_POST['submit3'])){
-		$_SESSION['id_src'] = $_POST['id3'];
-	}
-	if(isset($_POST['submit4'])){
-		$_SESSION['id_src'] = $_POST['id4'];
-	}
-	if(isset($_POST['submit5'])){
-		$_SESSION['id_src'] = $_POST['id5'];
-	}
-	if(isset($_POST['submit6'])){
-		$_SESSION['id_src'] = $_POST['id6'];
-	}
-	if(isset($_POST['submit7'])){
-		$_SESSION['id_src'] = $_POST['id7'];
-	}
-	if(isset($_POST['submit8'])){
-		$_SESSION['id_src'] = $_POST['id8'];
-	}
-	if(isset($_POST['submit9'])){
-		$_SESSION['id_src'] = $_POST['id9'];
-	}
-	if(isset($_POST['submit10'])){
-		$_SESSION['id_src'] = $_POST['id10'];
-	}
-	if(isset($_POST['submit11'])){
-		$_SESSION['id_src'] = $_POST['id11'];
-	}
-	if(isset($_POST['submit12'])){
-		$_SESSION['id_src'] = $_POST['id12'];
-	}
+// 	if(isset($_POST['submit1'])){
+// 		$_SESSION['id_src'] = $_POST['id1'];
+// 	}
+// 	if(isset($_POST['submit2'])){
+// 		$_SESSION['id_src'] = $_POST['id2'];
+// 	}
+// 	if(isset($_POST['submit3'])){
+// 		$_SESSION['id_src'] = $_POST['id3'];
+// 	}
+// 	if(isset($_POST['submit4'])){
+// 		$_SESSION['id_src'] = $_POST['id4'];
+// 	}
+// 	if(isset($_POST['submit5'])){
+// 		$_SESSION['id_src'] = $_POST['id5'];
+// 	}
+// 	if(isset($_POST['submit6'])){
+// 		$_SESSION['id_src'] = $_POST['id6'];
+// 	}
+// 	if(isset($_POST['submit7'])){
+// 		$_SESSION['id_src'] = $_POST['id7'];
+// 	}
+// 	if(isset($_POST['submit8'])){
+// 		$_SESSION['id_src'] = $_POST['id8'];
+// 	}
+// 	if(isset($_POST['submit9'])){
+// 		$_SESSION['id_src'] = $_POST['id9'];
+// 	}
+// 	if(isset($_POST['submit10'])){
+// 		$_SESSION['id_src'] = $_POST['id10'];
+// 	}
+// 	if(isset($_POST['submit11'])){
+// 		$_SESSION['id_src'] = $_POST['id11'];
+// 	}
+// 	if(isset($_POST['submit12'])){
+// 		$_SESSION['id_src'] = $_POST['id12'];
+// 	}
 
-if(isset($_SESSION['id_src'])){
-	$img_src = $_SESSION['id_src'].'.jpg';
-} else {
-	$img_src = '1.jpg';
-}
+// if(isset($_SESSION['id_src'])){
+// 	$img_src = $_SESSION['id_src'].'.jpg';
+// } else {
+// 	$img_src = '1.jpg';
+// }
 
 ?>
 
@@ -61,7 +61,7 @@ if(isset($_SESSION['id_src'])){
 
 	<style>
 		.wrapper {
-			background: url('assets/img/slide/<?=$img_src?>') no-repeat center top / cover;
+			background: url('assets/img/slide/12.jpg') no-repeat center top / cover;
 	
 		}
 	</style>
@@ -90,5 +90,5 @@ if(isset($_SESSION['id_src'])){
 	</div>
 </header>
 <main>
-<div class="container">
+<div class="container <?=$style?>">
 	<div class="content">

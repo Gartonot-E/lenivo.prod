@@ -39,9 +39,9 @@ if(isset($_SESSION['user_login'])){
 ?>
 
 
-<h1>Авторизация</h1>
+<h1 class="text-center">Авторизация</h1>
 <div class="login">
-	<div class="row">
+	<div class="row loginMain">
 	<form method="POST">
 		<?php 
 		if(!empty($errors) && isset($errors)) { echo "<div class='alert-error'>".array_shift($errors)."</div>";}
@@ -65,8 +65,6 @@ if(isset($_SESSION['user_login'])){
 		</div>
 		<p>Ещё нет аккаунта?<br><a href="signup">Зарегистрироваться</a></p>
 	</form>
-
-	<img src="assets/img/group.svg" class="user-group" alt="Группа пользователей">
 	</div>
 </div>
 <?php 
