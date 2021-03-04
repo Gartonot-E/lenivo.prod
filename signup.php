@@ -3,6 +3,7 @@
 $errors = [];
 $success = [];
 
+
 if(isset($_POST['done_signup']) && !empty($_POST['full_name']) && !empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password'])){
 
 	$full_name = trim(htmlspecialchars($_POST['full_name']));
